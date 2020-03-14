@@ -30,4 +30,8 @@ class Deck
         @cards.push(*cards)
     end
 
+    def shuffle
+        @cards.shuffle!
+    end
+
 end
