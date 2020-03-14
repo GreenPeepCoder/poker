@@ -32,6 +32,14 @@ describe Deck do
         end
     end
 
+    let(:deck) do
+        Deck.new(cards.dup)
+    end
+
+    it 'should not expose its cards' do
+        expect(deck).not_to respond_to(:cards)
+    end
+
     describe "#take" do
     end
 
