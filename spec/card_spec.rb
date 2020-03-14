@@ -24,5 +24,16 @@ describe Card do
     end
 
     describe "#<=>" do
+        it 'should return 0 when cards are the same' do
+            expect(Card.new("10", :spades) <=> Card.new("10", :spades)).to eq(0)
+        end
+
+        it 'should return 1 when card has higher value'
+
+        it 'should return 1 when card has same value, but higher suit'
+
+        it 'should return -1 when card has lower value'
+
+        it 'should return -1 when card has same value, but lower suit'
     end
 end

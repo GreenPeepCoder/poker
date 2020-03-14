@@ -37,4 +37,14 @@ class Card
         end
         @value, @suit = value, suit
     end
+
+    def ==(other_card)
+        @value == other_card.value && @suit == other_card.suit
+    end
+
+    def <=>(other_card)
+        if other_card == self
+            return 0
+        end
+    end
 end
