@@ -34,4 +34,8 @@ class Deck
         @cards.shuffle!
     end
 
+    def deal_hand
+        Hand.new(take(5))
+    end
+
 end
