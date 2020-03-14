@@ -41,6 +41,21 @@ describe Deck do
     end
 
     describe "#take" do
+        it 'takes cards off the top of the deck' do
+            expect(deck.take(1)).to eq(cards[0..0])
+            expect(deck.take(2)).to eq(cards[1..2])
+        end
+
+        it 'removes cards from deck on take' do
+            deck.take(2)
+            expect(deck.count).to eq(1)
+        end
+
+        it "doesn't allow you to take more cards than are in the deck" do
+            expect do
+                deck.take(4)
+            end.to raise_error("not enough cards")
+        end
     end
 
     describe "#return" do
