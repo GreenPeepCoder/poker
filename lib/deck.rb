@@ -26,4 +26,8 @@ class Deck
         @cards.shift(num)
     end
 
+    def return(cards)
+        @cards.push(*cards)
+    end
+
 end
