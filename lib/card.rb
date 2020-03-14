@@ -45,6 +45,10 @@ class Card
     def <=>(other_card)
         if other_card == self
             return 0
+        elsif other_card.value != @value
+            Card.values.index(@value) <=> Card.values.index(other_card.value)
+        else
+            @suit <=> other_card.suit
         end
     end
 end
