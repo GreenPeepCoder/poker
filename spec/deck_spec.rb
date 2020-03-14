@@ -16,7 +16,20 @@ describe Deck do
         end
     end
 
+    let(:cards) do
+        [double("card", :value => "K", :suit => :spades),
+         double("card", :value => "Q", :suit => :spades),
+         double("card", :value => "J", :suit => :spades)]
+    end
+
     describe "#initialize" do
+        it 'by default, creates a standard 52-card deck' do
+            expect(Deck.new.count).to eq(52)
+        end
+
+        it 'can be initialized with an array of cards' do
+            expect(Deck.new(cards).count).to eq(3)
+        end
     end
 
     describe "#take" do

@@ -13,4 +13,12 @@ class Deck
         deck
     end
 
+    def initialize(cards = Deck.all_cards)
+        @cards = cards
+    end
+
+    def count
+        @cards.count
+    end
+
 end
