@@ -51,4 +51,8 @@ class Card
             @suit <=> other_card.suit
         end
     end
+
+    def to_s
+        @value + @suit
+    end
 end
