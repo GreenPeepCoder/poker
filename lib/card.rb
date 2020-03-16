@@ -26,6 +26,10 @@ class Card
     def self.values
         VALUE_STRINGS.values
     end
+
+    def inspect
+        "#{value}" + "#{suit.inspect}"
+    end
     
     attr_reader :value, :suit
 
