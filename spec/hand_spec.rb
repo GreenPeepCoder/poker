@@ -28,6 +28,19 @@ describe Hand do
     end
 
     describe "#trade_cards" do
+        let!(:take_cards) {hand.cards[0..1]}
+        let!(:new_cards) {[Card.new("5", :spades), Card.new("3", :clubs)]}
+
+        it 'discards specified cards' do
+            hand.trade_cards(take_cards, new_cards)
+            expect(hand.cards).to_not include(*take_cards)
+        end
+
+        it 'takes specified cards'
+
+        it 'raises an error if trade does not result in five cards'
+
+        it 'raises an error if trade tries to discard unowned card'
     end
 
     describe "poker hands" do
