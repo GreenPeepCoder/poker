@@ -55,6 +55,120 @@ describe Hand do
     end
 
     describe "poker hands" do
+        let(:royal_flush) do
+            Hand.new([
+                Card.new("A", :spades),
+                Card.new("K", :spades),
+                Card.new("Q", :spades),
+                Card.new("J", :spades),
+                Card.new("10", :spades),
+            ])
+        end
+        
+        let(:straight_flush) do
+            Hand.new([
+                Card.new("8", :spades),
+                Card.new("7", :spades),
+                Card.new("6", :spades),
+                Card.new("5", :spades),
+                Card.new("4", :spades),
+            ])
+        end
+
+        let(:four_of_a_kind) do
+            Hand.new([
+                Card.new("A", :spades),
+                Card.new("A", :hearts),
+                Card.new("A", :diamonds),
+                Card.new("A", :clubs),
+                Card.new("10", :spades),
+            ])
+        end
+
+        let(:full_house) do
+            Hand.new([
+                Card.new("A", :spades),
+                Card.new("A", :clubs),
+                Card.new("K", :spades),
+                Card.new("K", :hearts),
+                Card.new("K", :diamonds),
+            ])
+        end
+
+        let(:flush) do
+            Hand.new([
+                Card.new("4", :spades),
+                Card.new("7", :spades),
+                Card.new("A", :spades),
+                Card.new("2", :spades),
+                Card.new("8", :spades),
+            ])
+        end
+
+        let(:straight) do
+            Hand.new([
+                Card.new("8", :hearts),
+                Card.new("7", :hearts),
+                Card.new("6", :diamonds),
+                Card.new("5", :clubs),
+                Card.new("4", :spades),
+            ])
+        end
+
+        let(:three_of_a_kind) do
+            Hand.new([
+                Card.new("A", :spades),
+                Card.new("A", :hearts),
+                Card.new("A", :diamonds),
+                Card.new("2", :clubs),
+                Card.new("10", :spades),
+            ])
+        end
+
+        let(:two_pair) do
+            Hand.new([
+                Card.new("A", :spades),
+                Card.new("A", :hearts),
+                Card.new("J", :diamonds),
+                Card.new("10", :clubs),
+                Card.new("10", :spades),
+            ])
+        end
+
+        let(:one_pair) do
+            Hand.new([
+                Card.new("8", :hearts),
+                Card.new("8", :hearts),
+                Card.new("6", :diamonds),
+                Card.new("5", :clubs),
+                Card.new("4", :spades),
+            ])
+        end
+
+        let(:high_card) do
+            Hand.new([
+                Card.new("A", :hearts),
+                Card.new("7", :hearts),
+                Card.new("6", :diamonds),
+                Card.new("5", :clubs),
+                Card.new("4", :spades),
+            ])
+        end
+
+        let(:hand_ranks) do
+            [
+                :royal_flush,
+                :straight_flush,
+                :four_of_a_kind,
+                :full_house,
+                :flush,
+                :straight,
+                :three_of_a_kind,
+                :two_pair,
+                :one_pair,
+                :high_card
+            ]
+        end
 
         describe "rank" do
         end
