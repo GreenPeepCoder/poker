@@ -1,4 +1,4 @@
-require_relative './poker_hands'
+require_relative 'poker_hands'
 
 class Hand
     include PokerHands
@@ -18,6 +18,9 @@ class Hand
         take_cards(new_cards) && discard_cards(old_cards) && sort!
     end
 
+    def to_s
+        cards.join(' ')
+    end
 
     private
     def sort!

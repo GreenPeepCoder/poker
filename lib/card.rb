@@ -27,6 +27,10 @@ class Card
         VALUE_STRINGS.values
     end
 
+    def self.royal_values
+        VALUE_STRINGS.values[-5..-1]
+    end
+
     def inspect
         "#{value}" + "#{suit.inspect}"
     end
