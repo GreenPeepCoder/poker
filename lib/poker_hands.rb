@@ -1,6 +1,7 @@
-
+require_relative "tie_breaker"
 
 module PokerHands
+    include TieBreaker
     
     RANKS = [
         :royal_flush,
@@ -23,7 +24,9 @@ module PokerHands
 
     def <=>(other_hand)
     end
+
     
+
     protected
     def card_value_count(value)
         @cards.map(&:value).count(value)
@@ -65,7 +68,7 @@ module PokerHands
     end
 
     def full_house?
-        three_of_a_kind? && one_pair?
+        one_pair? && three_of_a_kind?
     end
 
     def flush?
@@ -73,8 +76,8 @@ module PokerHands
     end
 
     def straight?
-        if has_a?(:ace) && has_a?(:two)
-            straight = Card.values[0..3] + [:ace]
+        if has_a?("A") && has_a?("2")
+            straight = Card.values[0..3] + ["A"]
         else
             low_idx = Card.values.index(@cards.first.value)
             straight = Card.values[low_idx..(low_idx + 4)]

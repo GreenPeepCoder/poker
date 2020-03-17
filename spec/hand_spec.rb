@@ -172,16 +172,16 @@ describe Hand do
         
         let!(:hands) do
             [
-                :royal_flush,
-                :straight_flush,
-                :four_of_a_kind,
-                :full_house,
-                :flush,
-                :straight,
-                :three_of_a_kind,
-                :two_pair,
-                :one_pair,
-                :high_card
+                royal_flush,
+                straight_flush,
+                four_of_a_kind,
+                full_house,
+                flush,
+                straight,
+                three_of_a_kind,
+                two_pair,
+                one_pair,
+                high_card
             ]
         end
 
@@ -203,7 +203,7 @@ describe Hand do
                     ])
                 end
 
-                skip 'should allow ace as the low card' do
+                it 'should allow ace as the low card' do
                     expect(ace_straight.rank).to eq(:straight)
                 end
             end
