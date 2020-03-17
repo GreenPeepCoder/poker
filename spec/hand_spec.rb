@@ -210,6 +210,29 @@ describe Hand do
         end
 
         describe "#<=>" do
+            it 'returns 1 for a hand with a higher rank' do
+                expect(royal_flush <=> straight_flush).to eq(1)
+            end
+            
+            it 'returns -1 for a hand with a lower rank' do
+                expect(straight_flush <=> royal_flush).to eq(-1)
+            end
+            
+            it 'returns 0 for identical hands' do
+                expect(straight_flush <=> straight_flush).to eq(0)
+            end
+
+            context 'when four of a kind' do
+            end
+
+            context 'when two pair' do
+            end
+
+            context 'when one pair' do
+            end
+
+            context 'when high card' do
+            end
         end
 
         describe "::winner" do

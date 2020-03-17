@@ -23,6 +23,13 @@ module PokerHands
     end
 
     def <=>(other_hand)
+        if self == other_hand
+            0
+        elsif rank != other_hand.rank
+            RANKS.reverse.index(rank) <=> RANKS.reverse.index(other_hand.rank)
+        else
+            tie_breaker(other_hand)
+        end
     end
 
     
