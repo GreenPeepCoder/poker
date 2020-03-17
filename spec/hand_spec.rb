@@ -169,8 +169,44 @@ describe Hand do
                 :high_card
             ]
         end
+        
+        let!(:hands) do
+            [
+                :royal_flush,
+                :straight_flush,
+                :four_of_a_kind,
+                :full_house,
+                :flush,
+                :straight,
+                :three_of_a_kind,
+                :two_pair,
+                :one_pair,
+                :high_card
+            ]
+        end
 
         describe "rank" do
+            skip 'should correctly identify the hand rank' do
+                hands.each_with_index do |hand, i|
+                    expect(hand.rank).to eq(hand_ranks[i])
+                end
+            end
+
+            context 'when straight' do
+                let(:ace_straight) do
+                    Hand.new([
+                        Card.new("A", :hearts),
+                        Card.new("2", :spades),
+                        Card.new("3", :hearts),
+                        Card.new("4", :hearts),
+                        Card.new("5", :hearts)
+                    ])
+                end
+
+                skip 'should allow ace as the low card' do
+                    expect(ace_straight.rank).to eq(:straight)
+                end
+            end
         end
 
         describe "#<=>" do
