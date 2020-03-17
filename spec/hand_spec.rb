@@ -186,7 +186,7 @@ describe Hand do
         end
 
         describe "rank" do
-            skip 'should correctly identify the hand rank' do
+            it 'should correctly identify the hand rank' do
                 hands.each_with_index do |hand, i|
                     expect(hand.rank).to eq(hand_ranks[i])
                 end
