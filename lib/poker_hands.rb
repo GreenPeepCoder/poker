@@ -90,11 +90,11 @@ module PokerHands
     end
 
     def two_pair?
-        pairs.count == 2
+        pairs.count/2 == 2
     end
 
     def one_pair?
-        pairs.count == 1
+        pairs.count/2 == 1
     end
 
     def high_card?

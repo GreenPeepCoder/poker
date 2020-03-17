@@ -21,14 +21,21 @@ module TieBreaker
 
     def compare_two_pair(other_hand)
     end
-
+    
     def high_pair
     end
-
+    
     def low_pair
     end
-
+    
     def compare_set_then_high_card(n, other_hand)
+        set_card, other_set_card = set_card(n), other_hand.set_card(n)
+        if set_card == other_set_card
+            cards_without(set_card.value).last <=>
+            other_hand.cards_without(other_set_card.value).last
+        else
+            set_card <=> other_set_card
+        end
     end
 
     protected
