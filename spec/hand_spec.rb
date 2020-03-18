@@ -222,16 +222,87 @@ describe Hand do
                 expect(straight_flush <=> straight_flush).to eq(0)
             end
 
-            context 'when four of a kind' do
-            end
+            context 'when hands have the same rank (tie breaker)' do
+                context 'when royal flush' do
+                    let(:hearts_royal_flush) do
+                        Hand.new([
+                            Card.new("A", :hearts),
+                            Card.new("K", :hearts),
+                            Card.new("Q", :hearts),
+                            Card.new("J", :hearts),
+                            Card.new("10", :hearts),
+                        ])
+                    end
 
-            context 'when two pair' do
-            end
+                    let(:spades_royal_flush) do
+                        Hand.new([
+                            Card.new("A", :spades),
+                            Card.new("K", :spades),
+                            Card.new("Q", :spades),
+                            Card.new("J", :spades),
+                            Card.new("10", :spades),
+                        ])
+                    end
 
-            context 'when one pair' do
-            end
+                    it 'comares based on suit' do 
+                        expect(:spades_royal_flush <=> :hearts_royal_flush).to eq(1)
+                        expect(:hearts_royal_flush <=> :spades_royal_flush).to eq(-1)
+                    end
+                end
+                
+                context 'straight flush' do
+                    let(:straight_flush_eight) do
+                        Hand.new([
+                            Card.new("8", :spades),
+                            Card.new("7", :spades),
+                            Card.new("6", :spades),
+                            Card.new("5", :spades),
+                            Card.new("4", :spades)
+                        ])
+                    end
+                    
+                    let(:straight_flush_nine) do
+                        Hand.new([
+                            Card.new("9", :spades),
+                            Card.new("8", :spades),
+                            Card.new("7", :spades),
+                            Card.new("6", :spades),
+                            Card.new("5", :spades)
+                        ])
+                    end
+                    
+                    let(:hearts_flush_nine) do
+                        Hand.new([
+                            Card.new("9", :hearts),
+                            Card.new("8", :hearts),
+                            Card.new("7", :hearts),
+                            Card.new("6", :hearts),
+                            Card.new("5", :hearts)
+                        ])
+                    end
 
-            context 'when high card' do
+                    it 'compares based on high card' do
+                        expect(:straight_flush_eight <=> :straight_flush_nine).to eq(-1)
+                        expect(:straight_flush_nine <=> :straight_flush_eight).to eq(1)
+                    end
+
+                    it 'compares based on suit when high card is the same' do
+                        expect(:straight_flush_nine <=> :hearts_flush_nine).to eq(1)
+                        expect(:hearts_flush_nine <=> :straight_flush_nine).to eq(-1)
+                    end
+                end
+
+                context 'when four of a kind' do
+                end
+                
+                context 'when two pair' do
+                end
+                
+                context 'when one pair' do
+                end
+                
+                context 'when high card' do
+                end
             end
         end
 
