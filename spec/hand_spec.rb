@@ -293,6 +293,82 @@ describe Hand do
                 end
 
                 context 'when four of a kind' do
+                    let(:four_tens) do
+                        Hand.new([
+                            Card.new("10", :spades),
+                            Card.new("10", :hearts),
+                            Card.new("10", :diamonds),
+                            Card.new("10", :clubs),
+                            Card.new("A", :spades)
+                        ])
+                    end
+                    
+                    let(:four_nines) do
+                        Hand.new([
+                            Card.new("9", :spades),
+                            Card.new("9", :hearts),
+                            Card.new("9", :diamonds),
+                            Card.new("9", :clubs),
+                            Card.new("A", :spades)
+                        ])
+                    end
+
+                    let(:ace_four) do
+                        Hand.new([
+                            Card.new("A", :spades),
+                            Card.new("A", :hearts),
+                            Card.new("A", :diamonds),
+                            Card.new("A", :clubs),
+                            Card.new("10", :spades)
+                        ])
+                    end
+                    
+                    let(:king_four) do
+                        Hand.new([
+                            Card.new("K", :spades),
+                            Card.new("K", :hearts),
+                            Card.new("K", :diamonds),
+                            Card.new("K", :clubs),
+                            Card.new("10", :spades)
+                        ])
+                    end
+                    
+                    it 'compares based on four of a kind value' do
+                        expect(four_tens <=> four_nines).to eq(1)
+                        expect(ace_four <=> king_four).to eq(1)
+                        expect(four_nines <=> four_tens).to eq(-1)
+                        expect(king_four <=> ace_four).to eq(-1)
+                    end
+                    
+                    let(:ace_with_two) do
+                        Hand.new([
+                            Card.new("A", :spades),
+                            Card.new("A", :hearts),
+                            Card.new("A", :diamonds),
+                            Card.new("A", :clubs),
+                            Card.new("2", :spades)
+                        ])
+                    end
+                    
+                    it 'compares based on high card if same four of a kind value' do
+                        expect(ace_four <=> ace_with_two).to eq(1)
+                        expect(ace_with_two <=> ace_four).to eq(-1)
+                    end
+                    
+                    let(:ace_with_two_hearts) do
+                        Hand.new([
+                            Card.new("A", :spades),
+                            Card.new("A", :hearts),
+                            Card.new("A", :diamonds),
+                            Card.new("A", :clubs),
+                            Card.new("2", :hearts)
+                        ])
+                    end
+
+                    it 'compares based on high card suit if same high card value' do
+                        expect(ace_with_two <=> ace_with_two_hearts).to eq(1)
+                        expect(ace_with_two_hearts <=> ace_with_two).to eq(-1)
+                    end
                 end
                 
                 context 'when two pair' do
