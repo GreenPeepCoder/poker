@@ -474,6 +474,43 @@ describe Hand do
                 end
                 
                 context 'when high card' do
+                    let(:ten_high) do
+                        Hand.new([
+                            Card.new("2", :spades),
+                            Card.new("4", :hearts),
+                            Card.new("6", :diamonds),
+                            Card.new("9", :spades),
+                            Card.new("10", :spades)
+                        ])
+                    end
+                    
+                    let(:king_high) do
+                        Hand.new([
+                            Card.new("2", :spades),
+                            Card.new("4", :hearts),
+                            Card.new("6", :diamonds),
+                            Card.new("9", :spades),
+                            Card.new("K", :spades)
+                        ])
+                    end
+
+                    it 'should compare based on high card' do
+                        expect(ten_high <=> king_high).to eq(-1)
+                    end
+                    
+                    let(:king_high_clubs) do
+                        Hand.new([
+                            Card.new("2", :spades),
+                            Card.new("4", :hearts),
+                            Card.new("6", :diamonds),
+                            Card.new("9", :spades),
+                            Card.new("K", :clubs)
+                        ])
+                    end
+                    
+                    it 'should compare based on high card suit if identical hands' do
+                        expect(king_high_clubs <=> king_high).to eq(-1)
+                    end
                 end
             end
         end
