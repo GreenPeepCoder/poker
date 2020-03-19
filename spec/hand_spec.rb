@@ -372,6 +372,33 @@ describe Hand do
                 end
                 
                 context 'when two pair' do
+                    let(:two_pair_3_4) do
+                        Hand.new([
+                            Card.new("3", :spades),
+                            Card.new("3", :hearts),
+                            Card.new("4", :hearts),
+                            Card.new("4", :diamonds),
+                            Card.new("10", :hearts)
+                        ])
+                    end
+                    
+                    let(:two_pair_4_5) do
+                        Hand.new([
+                            Card.new("5", :spades),
+                            Card.new("5", :hearts),
+                            Card.new("4", :hearts),
+                            Card.new("4", :diamonds),
+                            Card.new("10", :hearts)
+                        ])
+                    end
+
+                    it 'higher of two pairs winds' do
+                        expect(two_pair_3_4 <=> two_pair_4_5).to eq(-1)
+                        expect(two_pair_4_5 <=> two_pair_3_4).to eq(1)
+                    end
+
+                    let(:pair_of_sixes) do
+                    end
                 end
                 
                 context 'when one pair' do

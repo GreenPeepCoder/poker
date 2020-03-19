@@ -20,12 +20,38 @@ module TieBreaker
     end
 
     def compare_two_pair(other_hand)
+        high = high_pair[0] <=> other_hand.high_pair[0]
+        if high == 0
+            low = low_pair[0] <=> other_hand.low_pair[0]
+            if low == 0
+                high_card = cards.find do |card|
+                    card_value_count(card.value) != 2
+                end
+                other_high_card = other_hand.cards.find do |card|
+                    other_hand.card_value_count(card.value) != 2
+                end
+            else
+                low
+            end
+        else
+            high
+        end
     end
     
     def high_pair
+        if pairs[1][0] < pairs[0][0]
+            pairs[0]
+        else
+            pairs[1]
+        end
     end
     
     def low_pair
+        if pairs[0][0] < pairs[1][0]
+            pairs[0]
+        else
+            pairs[1]
+        end
     end
     
     def compare_set_then_high_card(n, other_hand)
