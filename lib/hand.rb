@@ -12,6 +12,10 @@ class Hand
         @cards = cards.sort
     end
 
+    def self.winner(hands)
+        hands.sort.last
+    end
+
     def trade_cards(old_cards, new_cards)
         raise 'must have five cards' if old_cards.length != new_cards.length
         raise 'cannot discard unowned card' if has_cards?(old_cards) == false

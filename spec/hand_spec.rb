@@ -516,6 +516,10 @@ describe Hand do
         end
 
         describe "::winner" do
+            it 'returns the winning hand' do
+                high_hands = [flush, straight_flush, one_pair]
+                expect(Hand.winner(high_hands)).to eq(straight_flush)
+            end
         end
     end
 end
