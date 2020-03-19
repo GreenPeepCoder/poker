@@ -519,6 +519,9 @@ describe Hand do
             it 'returns the winning hand' do
                 high_hands = [flush, straight_flush, one_pair]
                 expect(Hand.winner(high_hands)).to eq(straight_flush)
+                
+                low_hands = [one_pair, two_pair, three_of_a_kind]
+                expect(Hand.winner(low_hands)).to eq(three_of_a_kind)
             end
         end
     end
