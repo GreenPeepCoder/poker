@@ -402,6 +402,75 @@ describe Hand do
                 end
                 
                 context 'when one pair' do
+                    let(:ace_pair) do
+                        Hand.new([
+                            Card.new("A", :spades),
+                            Card.new("A", :hearts),
+                            Card.new("Q", :spades),
+                            Card.new("J", :diamonds),
+                            Card.new("10", :spades)
+                        ])
+                    end
+
+                    let(:king_pair) do
+                        Hand.new([
+                            Card.new("K", :spades),
+                            Card.new("K", :hearts),
+                            Card.new("Q", :spades),
+                            Card.new("J", :diamonds),
+                            Card.new("10", :spades)
+                        ])
+                    end
+                    
+                    let(:three_pair_jack_high) do
+                        Hand.new([
+                            Card.new("3", :spades),
+                            Card.new("3", :hearts),
+                            Card.new("9", :spades),
+                            Card.new("J", :diamonds),
+                            Card.new("10", :spades)
+                        ])
+                    end
+                    
+                    let(:three_pair_king_high) do
+                        Hand.new([
+                            Card.new("3", :spades),
+                            Card.new("3", :hearts),
+                            Card.new("9", :spades),
+                            Card.new("K", :diamonds),
+                            Card.new("10", :spades)
+                        ])
+                    end
+                    
+                    let(:four_pair) do
+                        Hand.new([
+                            Card.new("4", :spades),
+                            Card.new("4", :hearts),
+                            Card.new("A", :spades),
+                            Card.new("2", :diamonds),
+                            Card.new("3", :spades)
+                        ])
+                    end
+
+                    it 'should compare based on pair value' do
+                        expect(ace_pair <=> king_pair).to eq(1)
+                        expect(four_pair <=> three_pair_jack_high).to eq(1)
+                    end
+
+                    let(:ace_pair_king_high) do
+                        Hand.new([
+                            Card.new("A", :spades),
+                            Card.new("A", :hearts),
+                            Card.new("K", :spades),
+                            Card.new("J", :diamonds),
+                            Card.new("10", :spades)
+                        ])
+                    end
+
+                    it 'should compare based on high card if same pair value' do
+                        expect(ace_pair <=> ace_pair_king_high).to eq(-1)
+                        expect(three_pair_king_high <=> three_pair_jack_high).to eq(1)
+                    end
                 end
                 
                 context 'when high card' do
