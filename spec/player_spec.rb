@@ -2,8 +2,16 @@ require 'rspec'
 require 'player'
 
 describe Player do
+    subject(:player) {Player.new(100)}
 
     describe '::buy_in' do
+        it 'should create a player' do
+            expect(player).to be_a(Player)
+        end
+
+        it 'should set the players bankroll' do
+            expect(player.bankroll).to eq(100)
+        end
     end
 
     describe '::deal_in' do

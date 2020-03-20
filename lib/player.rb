@@ -1,11 +1,15 @@
 class Player
 
+    attr_reader :bankroll
+
     include Comparable
 
     def self.buy_in(bankroll)
     end
 
     def initialize(bankroll)
+        @bankroll = bankroll
+        @current_bet = 0
     end
 
     def deal_in(hand)
