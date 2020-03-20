@@ -28,4 +28,9 @@ class Game
             end
         end
     end
+
+    def add_to_pot(amount)
+        @pot += amount
+        amount
+    end
 end

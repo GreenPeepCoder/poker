@@ -72,5 +72,12 @@ describe Game do
     end
 
     describe '#add_to_pot' do
+        it 'should add the specified amount to the pot' do
+            expect {game.add_to_pot(100)}.to change{game.pot}.by(100)
+        end
+
+        it 'should return the amount added' do
+            expect(game.add_to_pot(100)).to eq(100)
+        end
     end
 end
