@@ -25,6 +25,7 @@ class Player
     end
 
     def receive_winnings(amount)
+        @bankroll += amount
     end
 
     def return_cards

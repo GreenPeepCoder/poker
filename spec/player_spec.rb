@@ -49,6 +49,11 @@ describe Player do
     end
 
     describe '#receive winnings' do
+        it 'should increment the players bankroll by the amount won' do
+            expect do
+                player.receive_winnings(10)
+            end.to change {player.bankroll}.by(10)
+        end
     end
 
     describe '#return_cards' do
