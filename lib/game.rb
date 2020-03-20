@@ -15,4 +15,8 @@ class Game
             @players << Player.new(bankrolls)
         end
     end
+
+    def game_over?
+        players.count { |player| player.bankroll > 0} <= 1
+    end
 end

@@ -40,6 +40,16 @@ describe Game do
     end
 
     describe '#game_over?' do
+        it 'should return false when players still have money' do
+            game.add_players(5, 100)
+            expect(game).not_to be_game_over
+        end
+
+        it 'should return true when all but one player has no more money' do
+            game.add_players(5, 0)
+            game.add_players(1, 100)
+            expect(game).to be_game_over
+        end
     end
 
     describe '#deal_cards' do
