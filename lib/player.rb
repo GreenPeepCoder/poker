@@ -17,6 +17,11 @@ class Player
     end
 
     def take_bet(total_bet)
+        amount = total_bet - @current_bet
+        raise "not enough money" if amount > @bankroll
+        @current_bet = total_bet
+        @bankroll -= amount
+        amount
     end
 
     def receive_winnings(amount)
