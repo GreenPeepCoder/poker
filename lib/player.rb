@@ -35,8 +35,14 @@ class Player
     end
 
     def fold
+        @folded = true
+    end
+    
+    def unfold
+        @folded = false
     end
 
     def folded?
+        @folded
     end
 end
