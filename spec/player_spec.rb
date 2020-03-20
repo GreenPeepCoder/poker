@@ -14,7 +14,13 @@ describe Player do
         end
     end
 
-    describe '::deal_in' do
+    describe '#deal_in' do
+        let(:hand) {double('hand')}
+
+        it 'should set the players hand' do
+            player.deal_in(hand)
+            expect(player.hand).to eq(hand)
+        end
     end
 
     describe '#take_bet' do

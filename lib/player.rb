@@ -1,6 +1,6 @@
 class Player
 
-    attr_reader :bankroll
+    attr_reader :bankroll, :hand, :current_bet
 
     include Comparable
 
@@ -13,6 +13,7 @@ class Player
     end
 
     def deal_in(hand)
+        @hand = hand
     end
 
     def take_bet(total_bet)
