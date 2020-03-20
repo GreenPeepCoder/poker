@@ -53,6 +53,22 @@ describe Game do
     end
 
     describe '#deal_cards' do
+        before(:each) do
+            game.add_players(5, 100)
+        end
+
+        it 'sould give each player a full hand' do
+            game.deal_cards
+            expect(
+                game.players.all? { |player| player.hand}
+            ).to be(true)
+        end
+
+        it 'sould not give a player who has no money a hand' do
+            game.add_players(1, 0)
+            game.deal_cards
+            expect(game.players.last.hand).to be_nil
+        end
     end
 
     describe '#add_to_pot' do

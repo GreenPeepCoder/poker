@@ -19,4 +19,13 @@ class Game
     def game_over?
         players.count { |player| player.bankroll > 0} <= 1
     end
+
+    def deal_cards
+        @players.each do |player|
+            if player.bankroll > 0
+                hand = @deck.deal_hand
+                player.deal_in(hand)
+            end
+        end
+    end
 end
