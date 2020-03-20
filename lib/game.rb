@@ -9,4 +9,10 @@ class Game
         @deck = Deck.new
         @players = []
     end
+
+    def add_players(num_players, bankrolls)
+        num_players.times do
+            @players << Player.new(bankrolls)
+        end
+    end
 end
