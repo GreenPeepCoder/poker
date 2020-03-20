@@ -29,6 +29,9 @@ class Player
     end
 
     def return_cards
+        cards = hand.cards
+        @hand = nil
+        cards
     end
 
     def fold

@@ -57,6 +57,17 @@ describe Player do
     end
 
     describe '#return_cards' do
+        let(:hand) {double('hand')}
+        let(:cards) {double('cards')}
+
+        before(:each) do
+            player.deal_in(hand)
+            allow(hand).to receive(:cards).and_return(cards)
+        end
+
+        it 'should return the players cards' do
+            expect(player.return_cards).to eq(cards)
+        end
     end
 
     describe '#fold' do
